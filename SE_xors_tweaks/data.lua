@@ -15,7 +15,7 @@ if mods["Krastorio2"] then
 					{
 						icon = data.raw.fluid["kr-ammonia"].icon,
 						icon_size = data.raw.fluid["kr-ammonia"].icon_size,
-						scale = 0.25 * 64 / data.raw.fluid["kr-ammonia"].icon_size,
+						scale = 0.25 * 64 / (data.raw.fluid["kr-ammonia"].icon_size or 64),
 						shift = { -9, 9 },
 					},
 					{
