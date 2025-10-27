@@ -441,6 +441,16 @@ if mods["Krastorio2"] then
 			"__space-exploration-graphics__/graphics/icons/iron-ingot.png"
 		)
 
+		-- casting
+		data.raw.recipe["se-iron-ingot-to-plate"].icons = data_util_SE_PP.sub_icons(
+			"__base__/graphics/icons/iron-plate.png",
+			"__space-exploration-graphics__/graphics/icons/iron-ingot.png"
+		)
+		data.raw.recipe["se-copper-ingot-to-plate"].icons = data_util_SE_PP.sub_icons(
+			"__base__/graphics/icons/copper-plate.png",
+			"__space-exploration-graphics__/graphics/icons/copper-ingot.png"
+		)
+
 		-- at this point the steel icon has changed, so we can just use the exact SE code to do this
 		data.raw.recipe["se-barrel-reprocessing"].icons = data_util_SE.transition_icons({
 			icon = data.raw.item["barrel"].icon,
