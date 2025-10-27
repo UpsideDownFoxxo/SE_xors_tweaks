@@ -1,5 +1,8 @@
 local mod_prefix = "xor-"
 
+local sand_name = mods["Krastorio2"] and "kr-sand" or "sand"
+local glass_name = mods["Krastorio2"] and "kr-sand" or "sand"
+
 local data_util_SE = require("__space-exploration__/data_util")
 
 if mods["Krastorio2"] then
@@ -62,20 +65,20 @@ if mods["Krastorio2"] then -- while SE and AAI have sand (and glass) the recipe 
 end
 data.raw["recipe"]["se-glass-vulcanite"].order = "04"
 if mods["Krastorio2"] then
-	data.raw["recipe"]["quartz"].order = "05"
-	data.raw["recipe"]["silicon"].order = "06"
-	data.raw["recipe"]["silicon-vulcanite"].order = "07"
+	data.raw["recipe"]["kr-quartz"].order = "05"
+	data.raw["recipe"]["kr-silicon"].order = "06"
+	data.raw["recipe"]["se-kr-silicon-with-vulcanite"].order = "07"
 end
 
 -- iron
 data.raw["recipe"]["se-core-fragment-iron-ore"].order = "01"
 if mods["Krastorio2"] then
-	data.raw["recipe"]["dirty-water-filtration-1"].order = "02"
+	data.raw["recipe"]["kr-filter-iron-ore-from-dirty-water"].order = "02"
 end
 data.raw["recipe"]["iron-plate"].order = "03"
 if mods["Krastorio2"] then
-	data.raw["recipe"]["enriched-iron"].order = "04"
-	data.raw["recipe"]["enriched-iron-plate"].order = "05"
+	data.raw["recipe"]["kr-enriched-iron"].order = "04"
+	data.raw["recipe"]["kr-iron-plate-from-enriched-iron"].order = "05"
 end
 data.raw["recipe"]["se-molten-iron"].order = "06"
 data.raw["recipe"]["se-iron-ingot"].order = "07"
@@ -89,12 +92,12 @@ data.raw["recipe"]["se-steel-ingot-to-plate"].order = "11"
 -- copper
 data.raw["recipe"]["se-core-fragment-copper-ore"].order = "01"
 if mods["Krastorio2"] then
-	data.raw["recipe"]["dirty-water-filtration-2"].order = "02"
+	data.raw["recipe"]["kr-filter-copper-ore-from-dirty-water"].order = "02"
 end
 data.raw["recipe"]["copper-plate"].order = "03"
 if mods["Krastorio2"] then
-	data.raw["recipe"]["enriched-copper"].order = "04"
-	data.raw["recipe"]["enriched-copper-plate"].order = "05"
+	data.raw["recipe"]["kr-enriched-copper"].order = "04"
+	data.raw["recipe"]["kr-copper-plate-from-enriched-copper"].order = "05"
 end
 data.raw["recipe"]["se-molten-copper"].order = "06"
 data.raw["recipe"]["se-copper-ingot"].order = "07"
@@ -102,18 +105,18 @@ data.raw["recipe"]["se-copper-ingot-to-plate"].order = "08"
 
 -- rare metals
 if mods["Krastorio2"] then
-	data.raw["recipe"]["se-core-fragment-rare-metals"].order = "01"
-	data.raw["recipe"]["dirty-water-filtration-3"].order = "02"
-	data.raw["recipe"]["rare-metals"].order = "03"
-	data.raw["recipe"]["enriched-rare-metals"].order = "04"
-	data.raw["recipe"]["rare-metals-2"].order = "05"
-	data.raw["recipe"]["rare-metals-vulcanite"].order = "06"
+	data.raw["recipe"]["se-core-fragment-kr-rare-metal-ore"].order = "01"
+	data.raw["recipe"]["kr-filter-rare-metal-ore-from-dirty-water"].order = "02"
+	data.raw["recipe"]["kr-rare-metals"].order = "03"
+	data.raw["recipe"]["kr-enriched-rare-metals"].order = "04"
+	data.raw["recipe"]["kr-rare-metals-from-enriched-rare-metals"].order = "05"
+	data.raw["recipe"]["se-kr-rare-metals-with-vulcanite"].order = "06"
 end
 
 -- imersite
 if mods["Krastorio2"] then
-	data.raw["recipe"]["se-core-fragment-imersite"].order = "01"
-	data.raw["recipe"]["imersite-powder"].order = "02"
+	data.raw["recipe"]["se-core-fragment-kr-imersite"].order = "01"
+	data.raw["recipe"]["kr-imersite-powder"].order = "02"
 end
 
 -- END RECIPE ORDERING
@@ -123,18 +126,21 @@ end
 -- stone
 data.raw["item"]["se-core-fragment-stone"].order = "01"
 data.raw["item"]["stone"].order = "02"
-data.raw["item"]["sand"].order = "03"
-data.raw["item"]["glass"].order = "04"
 if mods["Krastorio2"] then
-	data.raw["item"]["quartz"].order = "05"
-	data.raw["item"]["silicon"].order = "06"
+	data.raw["item"]["kr-quartz"].order = "05"
+	data.raw["item"]["kr-silicon"].order = "06"
+	data.raw["item"]["kr-sand"].order = "03"
+	data.raw["item"]["kr-glass"].order = "04"
+else
+	data.raw["item"]["sand"].order = "03"
+	data.raw["item"]["glass"].order = "04"
 end
 
 -- iron
 data.raw["item"]["se-core-fragment-iron-ore"].order = "01"
 data.raw["item"]["iron-ore"].order = "02"
 if mods["Krastorio2"] then
-	data.raw["item"]["enriched-iron"].order = "03"
+	data.raw["item"]["kr-enriched-iron"].order = "03"
 end
 data.raw["item"]["se-iron-ingot"].order = "04"
 data.raw["item"]["iron-plate"].order = "05"
@@ -143,17 +149,17 @@ data.raw["item"]["iron-plate"].order = "05"
 data.raw["item"]["se-core-fragment-copper-ore"].order = "01"
 data.raw["item"]["copper-ore"].order = "02"
 if mods["Krastorio2"] then
-	data.raw["item"]["enriched-copper"].order = "03"
+	data.raw["item"]["kr-enriched-copper"].order = "03"
 end
 data.raw["item"]["se-copper-ingot"].order = "04"
 data.raw["item"]["copper-plate"].order = "05"
 
 -- rare metals
 if mods["Krastorio2"] then
-	data.raw["item"]["se-core-fragment-rare-metals"].order = "01"
-	data.raw["item"]["raw-rare-metals"].order = "02"
-	data.raw["item"]["enriched-rare-metals"].order = "03"
-	data.raw["item"]["rare-metals"].order = "04"
+	data.raw["item"]["se-core-fragment-kr-rare-metal-ore"].order = "01"
+	data.raw["item"]["kr-rare-metal-ore"].order = "02"
+	data.raw["item"]["kr-enriched-rare-metals"].order = "03"
+	data.raw["item"]["kr-rare-metals"].order = "04"
 end
 
 -- END ITEM ORDERING
@@ -177,9 +183,9 @@ if settings.startup["xor-enable-coal-landfill"].value == true then
 					},
 				},
 				ingredients = {
-					{ type ="item",name=item_name,amount = count },
+					{ type = "item", name = item_name, amount = count },
 				},
-				results = {{type="item",name="landfill",amount=1}},
+				results = { { type = "item", name = "landfill", amount = 1 } },
 				order = "z-b-" .. item_name,
 				allow_decomposition = false,
 			},
@@ -196,8 +202,8 @@ end
 if mods["Krastorio2"] then
 	if settings.startup["xor-enable-chemicals-fuel-value"].value == true then
 		-- fuel value for hydrogen
-		data.raw["fluid"]["hydrogen"].fuel_value = "450kJ"
-		data.raw["fluid"]["hydrogen"].emissions_multiplier = 0.5
+		data.raw["fluid"]["kr-hydrogen"].fuel_value = "450kJ"
+		data.raw["fluid"]["kr-hydrogen"].emissions_multiplier = 0.5
 
 		-- fuel value for light oil
 		data.raw["fluid"]["light-oil"].fuel_value = "600kJ"
@@ -209,41 +215,61 @@ if mods["Krastorio2"] then
 		-- just copied from original and swapped outputs
 		data.raw["assembling-machine"]["kr-electrolysis-plant"].fluid_boxes = {
 			-- Input
+
 			{
 				production_type = "input",
 				pipe_covers = pipecoverspictures(),
-				pipe_picture = kr_pipe_path,
-				base_area = 10,
-				base_level = -1,
-				pipe_connections = { { type = "input", position = { -3, -1 } } },
+				pipe_picture = require("__Krastorio2__.prototypes.buildings.pipe-picture"),
+				volume = 100,
+				pipe_connections = {
+					{
+						flow_direction = "input",
+						direction = defines.direction.west --[[@as data.Direction]],
+						position = { -2, -1 },
+					},
+				},
 			},
 			{
 				production_type = "input",
 				pipe_covers = pipecoverspictures(),
-				pipe_picture = kr_pipe_path,
-				base_area = 10,
-				base_level = -1,
-				pipe_connections = { { type = "input", position = { -3, 1 } } },
-			},
-			-- Output
-			{
-				production_type = "output",
-				pipe_covers = pipecoverspictures(),
-				pipe_picture = kr_pipe_path,
-				base_area = 10,
-				base_level = 1,
-				pipe_connections = { { type = "output", position = { 3, 1 } } },
+				pipe_picture = require("__Krastorio2__.prototypes.buildings.pipe-picture"),
+				volume = 100,
+				pipe_connections = {
+					{
+						flow_direction = "input",
+						direction = defines.direction.west --[[@as data.Direction]],
+						position = { -2, 1 },
+					},
+				},
 			},
 			{
 				production_type = "output",
 				pipe_covers = pipecoverspictures(),
-				pipe_picture = kr_pipe_path,
-				base_area = 10,
-				base_level = 1,
-				pipe_connections = { { type = "output", position = { 3, -1 } } },
+				pipe_picture = require("__Krastorio2__.prototypes.buildings.pipe-picture"),
+				volume = 100,
+				pipe_connections = {
+					{
+						flow_direction = "output",
+						direction = defines.direction.east --[[@as data.Direction]],
+						position = { 2, -1 },
+					},
+				},
 			},
-			off_when_no_fluid_recipe = false,
+			{
+				production_type = "output",
+				pipe_covers = pipecoverspictures(),
+				pipe_picture = require("__Krastorio2__.prototypes.buildings.pipe-picture"),
+				volume = 100,
+				pipe_connections = {
+					{
+						flow_direction = "output",
+						direction = defines.direction.east --[[@as data.Direction]],
+						position = { 2, 1 },
+					},
+				},
+			},
 		}
+		data.raw["assembling-machine"]["kr-electrolysis-plant"].fluid_boxes_off_when_no_fluid_recipe = false
 	end
 end
 
@@ -320,9 +346,9 @@ end
 if mods["Krastorio2"] then
 	if settings.startup["xor-enable-uranium-balance"].value == true then
 		data.raw["recipe"]["uranium-fuel-cell"].ingredients = {
-			{ "steel-plate", 1 },
-			{ "uranium-238", 8 }, -- down from 10
-			{ "uranium-235", 1 }, -- down from 2
+			{ type = "item", name = "steel-plate", amount = 1 },
+			{ type = "item", name = "uranium-238", amount = 8 }, -- down from 10
+			{ type = "item", name = "uranium-235", amount = 1 }, -- down from 2
 		}
 
 		-- SE post process overwrites those:
@@ -342,7 +368,7 @@ if mods["Krastorio2"] then
 		copy_of_reprocessing_recipe.results = {
 			{ type = "item", name = "uranium-238", amount = 4 }, -- down from 5
 			{ type = "item", name = "stone", amount_min = 2, amount_max = 3 }, -- down from 3
-			{ type = "item", name = "tritium", probability = 0.12, amount = 1 }, --  down from 15%
+			{ type = "item", name = "kr-tritium", probability = 0.12, amount = 1 }, --  down from 15%
 		}
 		data:extend({ copy_of_reprocessing_recipe })
 		-- ...overwrite original in tech
@@ -356,22 +382,22 @@ end
 
 if mods["Krastorio2"] then
 	if settings.startup["xor-enable-dirty-water-balance"].value == true then
-		data.raw["recipe"]["se-dirty-water-filtration-iridium"].normal.results = {
+		data.raw["recipe"]["se-kr-dirty-water-filtration-iridium"].results = {
 			{ type = "fluid", name = "water", amount = 90 },
-			{ name = "stone", probability = 0.40, amount = 1 },
+			{ type = "item", name = "stone", probability = 0.40, amount = 1 },
 			--{name = "se-iridium-ore-crushed", probability = 0.10, amount = 1},
-			{ name = "se-iridium-ore-crushed", probability = 0.60, amount = 1 },
+			{ type = "item", name = "se-iridium-ore-crushed", probability = 0.60, amount = 1 },
 			--{name = "se-vulcanite-ion-exchange-beads", probability = 0.6, amount =1}
-			{ name = "se-vulcanite-ion-exchange-beads", probability = 0.8, amount = 1 },
+			{ type = "item", name = "se-vulcanite-ion-exchange-beads", probability = 0.8, amount = 1 },
 		}
 
-		data.raw["recipe"]["se-dirty-water-filtration-holmium"].normal.results = {
+		data.raw["recipe"]["se-kr-dirty-water-filtration-holmium"].results = {
 			{ type = "fluid", name = "water", amount = 90 },
-			{ name = "stone", probability = 0.40, amount = 1 },
+			{ type = "item", name = "stone", probability = 0.40, amount = 1 },
 			--{name = "se-holmium-ore-crushed", probability = 0.10, amount = 1},
-			{ name = "se-holmium-ore-crushed", probability = 0.60, amount = 1 },
+			{ type = "item", name = "se-holmium-ore-crushed", probability = 0.60, amount = 1 },
 			--{name = "se-cryonite-ion-exchange-beads", probability = 0.6, amount =1}
-			{ name = "se-cryonite-ion-exchange-beads", probability = 0.8, amount = 1 },
+			{ type = "item", name = "se-cryonite-ion-exchange-beads", probability = 0.8, amount = 1 },
 		}
 	end
 end
@@ -393,11 +419,13 @@ if mods["Krastorio2"] then
 		)
 
 		-- from enriched
-		data.raw["recipe"]["enriched-iron-plate"].icons =
-			data_util_SE_PP.sub_icons("__base__/graphics/icons/iron-plate.png", data.raw["item"]["enriched-iron"].icon)
-		data.raw["recipe"]["enriched-copper-plate"].icons = data_util_SE_PP.sub_icons(
+		data.raw["recipe"]["kr-iron-plate-from-enriched-iron"].icons = data_util_SE_PP.sub_icons(
+			"__base__/graphics/icons/iron-plate.png",
+			data.raw["item"]["kr-enriched-iron"].icon
+		)
+		data.raw["recipe"]["kr-copper-plate-from-enriched-copper"].icons = data_util_SE_PP.sub_icons(
 			"__base__/graphics/icons/copper-plate.png",
-			data.raw["item"]["enriched-copper"].icon
+			data.raw["item"]["kr-enriched-copper"].icon
 		)
 
 		-- steel (from ingot)
@@ -410,13 +438,13 @@ if mods["Krastorio2"] then
         data_util_SE_PP.sub_icons("__base__/graphics/icons/steel-plate.png", "__space-exploration-graphics__/graphics/icons/steel-ingot.png")]]
 		data.raw.recipe["se-steel-ingot-to-plate"].icons = data_util_SE_PP.sub_icons(
 			"__SE_xors_tweaks__/graphics/icons/angels-plate-silver.png",
-			"__space-exploration-graphics__/graphics/icons/steel-ingot.png"
+			"__space-exploration-graphics__/graphics/icons/iron-ingot.png"
 		)
 
 		-- at this point the steel icon has changed, so we can just use the exact SE code to do this
-		data.raw.recipe["se-empty-barrel-reprocessing"].icons = data_util_SE.transition_icons({
-			icon = data.raw.item["empty-barrel"].icon,
-			icon_size = data.raw.item["empty-barrel"].icon_size,
+		data.raw.recipe["se-barrel-reprocessing"].icons = data_util_SE.transition_icons({
+			icon = data.raw.item["barrel"].icon,
+			icon_size = data.raw.item["barrel"].icon_size,
 			scale = 0.5,
 		}, {
 			icon = data.raw.item["steel-plate"].icon,
@@ -431,8 +459,8 @@ if mods["Krastorio2"] then
 		)
 
 		-- use AAI sand
-		data.raw["item"]["sand"].icon = "__aai-industry__/graphics/icons/sand.png"
-		data.raw["item"]["sand"].pictures = nil -- needed because K2 uses the different-icon-variants for sand-on-ground feature
+		data.raw["item"]["kr-sand"].icon = "__aai-industry__/graphics/icons/sand.png"
+		data.raw["item"]["kr-sand"].pictures = nil -- needed because K2 uses the different-icon-variants for sand-on-ground feature
 	end
 
 	-- only if non-K2 graphics from above are NOT used:
@@ -461,9 +489,9 @@ if mods["Krastorio2"] then
 		)
 
 		-- at this point the steel icon has changed, so we can just use the exact SE code to do this
-		data.raw.recipe["se-empty-barrel-reprocessing"].icons = data_util_SE.transition_icons({
-			icon = data.raw.item["empty-barrel"].icon,
-			icon_size = data.raw.item["empty-barrel"].icon_size,
+		data.raw.recipe["se-barrel-reprocessing"].icons = data_util_SE.transition_icons({
+			icon = data.raw.item["barrel"].icon,
+			icon_size = data.raw.item["barrel"].icon_size,
 			scale = 0.5,
 		}, {
 			icon = data.raw.item["steel-plate"].icon,

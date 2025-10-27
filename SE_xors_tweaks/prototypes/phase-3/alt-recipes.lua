@@ -3,7 +3,7 @@ local data_util_SE_PP = require("__space-exploration-postprocess__/data_util")
 
 -- mirror alt (SE)
 data.raw.recipe["se-space-mirror-alternate"].ingredients = {
-	{ type = "item", name = "glass", amount = 2 },
+	{ type = "item", name = mods["Krastorio2"] and "kr-glass" or "glass", amount = 2 },
 	{ type = "item", name = "se-iridium-plate", amount = 2 },
 	{ type = "item", name = "low-density-structure", amount = 1 },
 	{ type = "fluid", name = "lubricant", amount = 5 },
@@ -22,16 +22,16 @@ if mods["Krastorio2"] then
 	new_RCU_recipe.name = mod_prefix .. new_RCU_recipe.name
 	new_RCU_recipe.enabled = false
 	new_RCU_recipe.ingredients = {
-		{ type = "item", name = "lithium-sulfur-battery", amount = 5 },
+		{ type = "item", name = "kr-lithium-sulfur-battery", amount = 5 },
 		{ type = "item", name = "advanced-circuit", amount = 5 },
-		{ type = "item", name = "glass", amount = 5 },
+		{ type = "item", name = mods["Krastorio2"] and "kr-glass" or "glass", amount = 5 },
 		{ type = "item", name = "iron-plate", amount = 5 },
 	}
 	new_RCU_recipe.energy_required = 20 --30
 	new_RCU_recipe.allow_productivity = true -- doesn't work, possibly because of SE-PP
 	new_RCU_recipe.icons = data_util_SE_PP.sub_icons(
 		data.raw["item"]["rocket-control-unit"].icon,
-		data.raw["item"]["lithium-sulfur-battery"].icon
+		data.raw["item"]["kr-lithium-sulfur-battery"].icon
 	)
 	data:extend({ new_RCU_recipe })
 
@@ -86,17 +86,17 @@ if mods["Krastorio2"] then
 	local new_botframe_recipe = table.deepcopy(data.raw["recipe"]["flying-robot-frame"])
 	new_botframe_recipe.name = mod_prefix .. new_botframe_recipe.name
 	new_botframe_recipe.enabled = false
-	new_botframe_recipe.normal.ingredients = {
-		{ name = "electric-engine-unit", amount = 3 }, --4
-		{ name = "lithium-sulfur-battery", amount = 4 },
-		{ name = "electronic-components", amount = 7 }, --10
-		{ name = "steel-plate", amount = 3 }, --4
+	new_botframe_recipe.ingredients = {
+		{ type = "item", name = "electric-engine-unit", amount = 3 }, --4
+		{ type = "item", name = "kr-lithium-sulfur-battery", amount = 4 },
+		{ type = "item", name = "kr-electronic-components", amount = 7 }, --10
+		{ type = "item", name = "steel-plate", amount = 3 }, --4
 	}
 	new_botframe_recipe.energy_required = 15 --20
 	new_botframe_recipe.allow_productivity = true
 	new_botframe_recipe.icons = data_util_SE_PP.sub_icons(
 		data.raw["item"]["flying-robot-frame"].icon,
-		data.raw["item"]["lithium-sulfur-battery"].icon
+		data.raw["item"]["kr-lithium-sulfur-battery"].icon
 	)
 	data:extend({ new_botframe_recipe })
 

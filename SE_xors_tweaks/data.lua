@@ -29,8 +29,7 @@ if mods["Krastorio2"] then
 					{ type = "fluid", name = "kr-ammonia", amount = 10 },
 					{ type = "fluid", name = "kr-nitric-acid", amount = 10 },
 				},
-				result = "explosives",
-				result_count = 3,
+				results = { { type = "item", name = "explosives", amount = 3 } },
 				order = item_name,
 				allow_decomposition = true,
 				--from vanilla explosives recipe:

@@ -9,7 +9,7 @@ local ingot = "ingot"
 if mods["Krastorio2"] then
 	if settings.startup["xor-enable-steel-casting-balance"].value == true then
 		data.raw["recipe"]["se-steel-ingot"].ingredients = {
-			{ type = "item", name = "coke", amount = 5 }, --6
+			{ type = "item", name = "kr-coke", amount = 5 }, --6
 			{ type = "fluid", name = "se-molten-iron", amount = 450 }, --500
 		}
 	end

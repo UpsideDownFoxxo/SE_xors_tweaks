@@ -1,5 +1,7 @@
 local mod_prefix = "xor-"
 
+local sand_name = mods["Krastorio2"] and "kr-sand" or "sand"
+
 -- filtering recipe
 data:extend({
 	{
@@ -7,7 +9,7 @@ data:extend({
 		name = mod_prefix .. "mineral-water-filtering",
 		energy_required = 3,
 		enabled = false,
-		category = "fluid-filtration",
+		category = "kr-fluid-filtration",
 		subgroup = "raw-material",
 		icons = {
 			{
@@ -23,15 +25,15 @@ data:extend({
 		},
 		ingredients = {
 			{ type = "fluid", name = "kr-mineral-water", amount = 100 },
-			{ type = "item", name = "sand", amount = 8 },
+			{ type = "item", name = "kr-sand", amount = 8 },
 		},
 		results = {
 			{ type = "fluid", name = "kr-dirty-water", amount = 80 },
 			--{type="item", name="sand", amount_min = 1, amount_max = 5},
-			{ type = "item", name = "sand", probability = 0.80, amount = 1 },
-			{ type = "item", name = "quartz", probability = 0.08, amount = 1 },
-			{ type = "item", name = "raw-rare-metals", probability = 0.08, amount = 1 },
-			{ type = "item", name = "lithium-chloride", probability = 0.08, amount = 1 },
+			{ type = "item", name = "kr-sand", probability = 0.80, amount = 1 },
+			{ type = "item", name = "kr-quartz", probability = 0.08, amount = 1 },
+			{ type = "item", name = "kr-rare-metal-ore", probability = 0.08, amount = 1 },
+			{ type = "item", name = "kr-lithium-chloride", probability = 0.08, amount = 1 },
 			{ type = "item", name = "sulfur", probability = 0.08, amount = 1 },
 		},
 		--main_product = "dirty-water", -- overwrites manual naming in locale if set
@@ -114,8 +116,8 @@ data:extend({
 		},
 		results = {
 			{ type = "fluid", name = "steam", amount = 100, temperature = 165 },
-			{ type = "item", name = "lithium-chloride", amount = 4 },
-			{ type = "item", name = "raw-rare-metals", amount = 3 },
+			{ type = "item", name = "kr-lithium-chloride", amount = 4 },
+			{ type = "item", name = "kr-rare-metal-ore", amount = 3 },
 			{ type = "item", name = "sulfur", amount = 3 },
 		},
 		order = item_name,
