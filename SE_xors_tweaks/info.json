@@ -1,8 +1,8 @@
 {
   "name": "SE_xors_tweaks",
   "version": "1.3.5",
-  "title": "xors (optional) Space Exploration (+ Krastorio 2) tweaks and additions",
-  "author": "xor, with some code from Wretlaw120 & Rekales",
+  "title": "xors (Forked) (optional) Space Exploration (+ Krastorio 2) tweaks and additions",
+  "author": "xor, with some code from Wretlaw120 & Rekales. Updated to 2.0 by Foxxo",
   "description": "Tweaks and additions of various small things for SE (and K2 if installed). All toggleable via settings! Check mod description for list.",
   "factorio_version": "2.0",
   "dependencies": [
@@ -23,4 +23,3 @@
     "? bzzirconium"
   ]
 }
-
