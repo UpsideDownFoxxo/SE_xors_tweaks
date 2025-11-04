@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.3.6
+Date: 2025-11-5
+  Changes:
+    - Update to 2.0
+    - SE: Removed 415°C and 900°C steam recipes for the electric boiler, since they have been added into base SE
+---------------------------------------------------------------------------------------------------
 Version: 1.3.5
 Date: 2023-04-22
   Changes:
