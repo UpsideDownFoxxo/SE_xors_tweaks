@@ -268,12 +268,8 @@ local function add_cryoslush_cooled_ingot(recipe_name)
 	if recipe.category ~= "casting" then
 		return
 	end
-	if recipe.result then
-		if string.find(recipe.result, ingot) then
-			is_ingot = true
-		end
-	elseif recipe.results then
-		for key, result in pairs(recipe.results) do
+	if recipe.results then
+		for _, result in pairs(recipe.results) do
 			if result.name ~= nil then
 				if string.find(result.name, ingot) then
 					is_ingot = true
@@ -310,7 +306,9 @@ local function add_cryoslush_cooled_ingot(recipe_name)
 				scale = 0.25,
 				shift = { 7, 7 },
 			})
-		elseif data.raw["item"][recipe.name] and data.raw["item"][recipe.name].icons then
+		end
+
+		if data.raw["item"][recipe.name] and data.raw["item"][recipe.name].icons then
 			new_recipe.main_product = recipe.name
 			new_recipe.icons = table.deepcopy(data.raw["item"][recipe.name].icons)
 			table.insert(new_recipe.icons, {
@@ -357,52 +355,6 @@ local function add_cryoslush_cooled_ingot(recipe_name)
 					shift = { 7, 7 },
 				},
 			}
-		elseif data.raw["item"][recipe.result] and data.raw["item"][recipe.result].icons then
-			new_recipe.main_product = recipe.result
-			new_recipe.icons = table.deepcopy(data.raw["item"][recipe.result].icons)
-			table.insert(new_recipe.icons, {
-				icon = data.raw["fluid"]["se-cryonite-slush"].icon,
-				icon_size = data.raw["fluid"]["se-cryonite-slush"].icon_size,
-				scale = 0.25,
-				shift = { 7, 7 },
-			})
-		elseif data.raw["item"][recipe.result] and data.raw["item"][recipe.result].icon then
-			new_recipe.main_product = recipe.result
-			new_recipe.icons = {
-				{
-					icon = data.raw["item"][recipe.result].icon,
-					icon_size = data.raw["item"][recipe.result].icon_size,
-				},
-				{
-					icon = data.raw["fluid"]["se-cryonite-slush"].icon,
-					icon_size = data.raw["fluid"]["se-cryonite-slush"].icon_size,
-					scale = 0.25,
-					shift = { 7, 7 },
-				},
-			}
-		elseif data.raw["item"][recipe.results[1][1]] and data.raw["item"][recipe.results[1][1]].icons then
-			new_recipe.main_product = recipe.results[1][1]
-			new_recipe.icons = table.deepcopy(data.raw["item"][recipe.results[1][1]].icons)
-			table.insert(new_recipe.icons, {
-				icon = data.raw["fluid"]["se-cryonite-slush"].icon,
-				icon_size = data.raw["fluid"]["se-cryonite-slush"].icon_size,
-				scale = 0.25,
-				shift = { 7, 7 },
-			})
-		elseif data.raw["item"][recipe.results[1][1]] and data.raw["item"][recipe.results[1][1]].icon then
-			new_recipe.main_product = recipe.results[1][1]
-			new_recipe.icons = {
-				{
-					icon = data.raw["item"][recipe.results[1][1]].icon,
-					icon_size = data.raw["item"][recipe.results[1][1]].icon_size,
-				},
-				{
-					icon = data.raw["fluid"]["se-cryonite-slush"].icon,
-					icon_size = data.raw["fluid"]["se-cryonite-slush"].icon_size,
-					scale = 0.25,
-					shift = { 7, 7 },
-				},
-			}
 		elseif data.raw["item"][recipe.results[1].name] and data.raw["item"][recipe.results[1].name].icons then
 			new_recipe.main_product = recipe.results[1].name
 			new_recipe.icons = table.deepcopy(data.raw["item"][recipe.results[1].name].icons)
@@ -441,6 +393,10 @@ local function add_cryoslush_cooled_ingot(recipe_name)
 				},
 			}
 		end
+
+		if new_recipe.main_product then
+			new_recipe.localised_name = { "item-name." .. new_recipe.main_product }
+		end
 	end
 end
 
@@ -459,11 +415,7 @@ local function add_water_cooled_ingot(recipe_name)
 	if recipe.category ~= "casting" then
 		return
 	end
-	if recipe.result then
-		if string.find(recipe.result, ingot) then
-			is_ingot = true
-		end
-	elseif recipe.results then
+	if recipe.results then
 		for key, result in pairs(recipe.results) do
 			if result.name ~= nil then
 				if string.find(result.name, ingot) then
@@ -571,52 +523,6 @@ local function add_water_cooled_ingot(recipe_name)
 					shift = { 7, 7 },
 				},
 			}
-		elseif data.raw["item"][recipe.result] and data.raw["item"][recipe.result].icons then
-			new_recipe.main_product = recipe.result
-			new_recipe.icons = table.deepcopy(data.raw["item"][recipe.result].icons)
-			table.insert(new_recipe.icons, {
-				icon = data.raw["fluid"]["water"].icon,
-				icon_size = data.raw["fluid"]["water"].icon_size,
-				scale = 0.25,
-				shift = { 7, 7 },
-			})
-		elseif data.raw["item"][recipe.result] and data.raw["item"][recipe.result].icon then
-			new_recipe.main_product = recipe.result
-			new_recipe.icons = {
-				{
-					icon = data.raw["item"][recipe.result].icon,
-					icon_size = data.raw["item"][recipe.result].icon_size,
-				},
-				{
-					icon = data.raw["fluid"]["water"].icon,
-					icon_size = data.raw["fluid"]["water"].icon_size,
-					scale = 0.25,
-					shift = { 7, 7 },
-				},
-			}
-		elseif data.raw["item"][recipe.results[1][1]] and data.raw["item"][recipe.results[1][1]].icons then
-			new_recipe.main_product = recipe.results[1][1]
-			new_recipe.icons = table.deepcopy(data.raw["item"][recipe.results[1][1]].icons)
-			table.insert(new_recipe.icons, {
-				icon = data.raw["fluid"]["water"].icon,
-				icon_size = data.raw["fluid"]["water"].icon_size,
-				scale = 0.25,
-				shift = { 7, 7 },
-			})
-		elseif data.raw["item"][recipe.results[1][1]] and data.raw["item"][recipe.results[1][1]].icon then
-			new_recipe.main_product = recipe.results[1][1]
-			new_recipe.icons = {
-				{
-					icon = data.raw["item"][recipe.results[1][1]].icon,
-					icon_size = data.raw["item"][recipe.results[1][1]].icon_size,
-				},
-				{
-					icon = data.raw["fluid"]["water"].icon,
-					icon_size = data.raw["fluid"]["water"].icon_size,
-					scale = 0.25,
-					shift = { 7, 7 },
-				},
-			}
 		elseif data.raw["item"][recipe.results[1].name] and data.raw["item"][recipe.results[1].name].icons then
 			new_recipe.main_product = recipe.results[1].name
 			new_recipe.icons = table.deepcopy(data.raw["item"][recipe.results[1].name].icons)
@@ -654,6 +560,10 @@ local function add_water_cooled_ingot(recipe_name)
 					shift = { 7, 7 },
 				},
 			}
+		end
+
+		if new_recipe.main_product then
+			new_recipe.localised_name = { "item-name." .. new_recipe.main_product }
 		end
 	end
 end
