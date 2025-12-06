@@ -259,6 +259,20 @@ then
 			volume = 200,
 		},
 	}
+
+	-- fix steel pipe connectivity
+	-- snippet from https://codeberg.org/raiguard/Krastorio2/src/branch/trunk/prototypes/final-fixes/steel-pipe-connectivity.lua
+	if mods["Krastorio2"] then
+		for _, box in pairs(data.raw["assembling-machine"]["se-casting-machine"].fluid_boxes) do
+			for _, connection in pairs(box.pipe_connections) do
+				local categories = connection.connection_category or { "default" }
+				if #categories == 1 and categories[1] == "default" and connection.connection_type ~= "underground" then
+					categories[#categories + 1] = "kr-steel-pipe"
+					connection.connection_category = categories
+				end
+			end
+		end
+	end
 end
 
 -- add new cryo recipes
