@@ -189,6 +189,13 @@ if
 	settings.startup["xor-enable-cryo-cooled-casting-recipes"].value == true
 	or settings.startup["xor-enable-water-cooled-casting-recipes"].value == true
 then
+	local categories = { "default" }
+
+	-- K2 steel pipes are a separate category, so we need to add them as well
+	if mods["Krastorio2"] then
+		categories[2] = "kr-steel-pipe"
+	end
+
 	data.raw["assembling-machine"]["se-casting-machine"].fluid_boxes = {
 		{
 			production_type = "input",
@@ -202,6 +209,7 @@ then
 					flow_direction = "input-output",
 					position = { -1.0, 0.5 },
 					direction = defines.direction.west --[[@as data.Direction]],
+					connection_category = categories,
 				},
 			},
 			secondary_draw_orders = { north = -1, east = -1, west = -1 },
@@ -219,6 +227,7 @@ then
 					flow_direction = "output",
 					position = { 0, -0.5 },
 					direction = defines.direction.north --[[@as data.Direction]],
+					connection_category = categories,
 				},
 			},
 			secondary_draw_orders = { north = -1, east = -1, west = -1 },
@@ -236,6 +245,7 @@ then
 					flow_direction = "input-output",
 					position = { 1.0, 0.5 },
 					direction = defines.direction.east --[[@as data.Direction]],
+					connection_category = categories,
 				},
 			},
 			secondary_draw_orders = { north = -1, east = -1, west = -1 },
@@ -253,26 +263,13 @@ then
 					flow_direction = "input-output",
 					position = { 0, 0.5 },
 					direction = defines.direction.south --[[@as data.Direction]],
+					connection_category = categories,
 				},
 			},
 			secondary_draw_orders = { north = -1, east = -1, west = -1 },
 			volume = 200,
 		},
 	}
-
-	-- fix steel pipe connectivity
-	-- snippet from https://codeberg.org/raiguard/Krastorio2/src/branch/trunk/prototypes/final-fixes/steel-pipe-connectivity.lua
-	if mods["Krastorio2"] then
-		for _, box in pairs(data.raw["assembling-machine"]["se-casting-machine"].fluid_boxes) do
-			for _, connection in pairs(box.pipe_connections) do
-				local categories = connection.connection_category or { "default" }
-				if #categories == 1 and categories[1] == "default" and connection.connection_type ~= "underground" then
-					categories[#categories + 1] = "kr-steel-pipe"
-					connection.connection_category = categories
-				end
-			end
-		end
-	end
 end
 
 -- add new cryo recipes
